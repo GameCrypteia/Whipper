@@ -40,7 +40,6 @@ The system architecture comprises three primary agents, each orchestrating speci
 
 The collaboration among these agents ensures a dynamic and adaptive user experience, maintaining the game's dark, shady, and secretive atmosphere.
 
-![System Architecture Diagram](#) *(Note: In an actual white paper, a diagram illustrating the system architecture would be placed here.)*
 
 ## Agent Descriptions
 
@@ -119,8 +118,6 @@ The interaction flow delineates the user's journey through the system, highlight
     - **Agents Involved**: **NPC Agents**
     - **Action**: Engage the user in character-specific dialogues, presenting and managing challenges to test the user's suitability for the society's trials.
 
-![Interaction Flow Diagram](#) *(Note: In an actual white paper, a flowchart illustrating the interaction steps would be placed here.)*
-
 ## Technical Implementation Guidelines
 
 This section outlines the technical considerations and steps necessary to implement the system effectively, ensuring that each agent operates within its defined parameters.
@@ -157,16 +154,6 @@ Temperature settings in AI models control the randomness of responses. A tempera
 **Configuration**:
 - **Set Temperature to 0**: This setting is crucial for all agents to ensure that responses are consistent, concise, and aligned with the predefined system prompts.
 
-**Example in Python**:
-```python
-import openai
-
-response = openai.ChatCompletion.create(
-    model="gpt-4",
-    messages=conversation,
-    temperature=0.0,  # Ensures consistency
-)
-```
 
 ### Isolated Sessions and Role Separation
 
@@ -177,33 +164,6 @@ Maintaining isolated sessions and clear role separation prevents agents from ove
 - **Unique System Prompts**: Each agent has a distinct system prompt that defines its role and behavior.
 - **Session Isolation**: Each user interaction is handled in a separate session, with agents accessing only the data pertinent to their role.
 - **Role Enforcement**: System prompts explicitly instruct agents not to simulate other roles or behaviors beyond their scope.
-
-**Example in Python**:
-```python
-import openai
-
-def initialize_agent(system_prompt):
-    return [
-        {"role": "system", "content": system_prompt}
-    ]
-
-def send_message(conversation, message):
-    conversation.append({"role": "user", "content": message})
-    response = openai.ChatCompletion.create(
-        model="gpt-4",
-        messages=conversation,
-        temperature=0.0,
-    )
-    agent_reply = response['choices'][0]['message']['content']
-    conversation.append({"role": "assistant", "content": agent_reply})
-    return agent_reply
-
-# Initialize Analyst conversation
-analyst_conversation = initialize_agent(analyst_system_prompt)
-
-# Send initial trigger message
-print(send_message(analyst_conversation, "start"))  # Outputs initial greeting
-```
 
 ## Security and Data Handling
 
