@@ -1,5 +1,3 @@
-# Whipper
-White Paper for Crypteia
 # Technical White Paper: Architecture and Functionality of The Analyst, Orchestrator, and NPC Agents in a Secret Society-Themed Interactive System
 
 ## Table of Contents
